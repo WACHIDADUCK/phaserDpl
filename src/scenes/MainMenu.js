@@ -1,7 +1,23 @@
 import { Scene } from 'phaser';
 
+let data= null;
+async function obtenerBicicletas() {
+    try {
+        const response = await fetch('https://api-bici-1.onrender.com/api/bicicletas');
+         data = await response.json();
+        console.log(data.bicicletas[0]);
+    } catch (error) {
+        console.error(error);
+    }
+}
+obtenerBicicletas();
+
+
 export class MainMenu extends Scene
 {
+
+    
+
     constructor ()
     {
         super('MainMenu');
@@ -33,12 +49,13 @@ export class MainMenu extends Scene
         this.playser.play('fly');
 
         
+        let bicicleta = `id:${data.bicicletas[0].id}, color:${data.bicicletas[0].color}, modelo:${data.bicicletas[0].modelo}`
+        this.add.text(512, 460, bicicleta, {
+            fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
+            stroke: '#000000', strokeThickness: 8,
+            align: 'center'
+        }).setOrigin(0.5);
 
-        // this.add.text(512, 460, 'Main Menu', {
-        //     fontFamily: 'Arial Black', fontSize: 38, color: '#ffffff',
-        //     stroke: '#000000', strokeThickness: 8,
-        //     align: 'center'
-        // }).setOrigin(0.5);
 
         this.input.once('pointerdown', () => {
 
