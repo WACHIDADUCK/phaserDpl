@@ -4,8 +4,29 @@ import { GameOver } from './scenes/GameOver';
 import { MainMenu } from './scenes/MainMenu';
 import { Preloader } from './scenes/Preloader';
 
+import { Bugfender } from '@bugfender/sdk';
+
+Bugfender.init({
+    appKey: 'K85j5R946CHuoSEbDUGJ1VvBejF4BOUP', //
+    overrideConsoleMethods: false,
+    // printToConsole: true, // hace que la llamada a bugfender.log va a parecer por consola
+    // registerErrorHandler: true, // 
+    logBrowserEvents: false, // todos los eventos 
+    // logUIEvents: true, //
+    // version: '',
+    // build: '',
+});
+
+
+
+
 //  Find out more information about the Game Config at:
 //  https://newdocs.phaser.io/docs/3.70.0/Phaser.Types.Core.GameConfig
+
+
+//Logs de inicio de sesión/carga de la aplicación.
+Bugfender.info('Inicio de sesion');
+
 const config = {
     type: Phaser.AUTO,
     width: 1024,
