@@ -22,7 +22,7 @@ async function obtenerBicicletas() {
         Bugfender.error(error);
     }
 }
-await obtenerBicicletas();
+ obtenerBicicletas();
 
 
 
